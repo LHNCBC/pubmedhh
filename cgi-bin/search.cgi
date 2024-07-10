@@ -41,6 +41,9 @@ height="0" width="0" style="display:none;visibility:hidden" title="googletagmana
 <!-- End Google Tag Manager (noscript) -->
 
   <div class="usa-overlay"></div>
+  <div class="CCOI-news container padding-top-2">
+  <p class="margin-bottom-0"><strong>These tools will no longer be maintained as of <span style="color:red;">December 31, 2024</span>.  Archived website can be found <a href="https://wayback.archive-it.org/7745/20240503152346/https://pubmedhh.nlm.nih.gov/" title="External link: please review our privacy policy.">here</a>. PubMed4Hh GitHub repository can be found <a href="https://github.com/lhncbc/pubmedhh">here</a>. <a href=https://support.nlm.nih.gov/support/create-case/>Contact NLM Customer Service</a> if you have questions.</strong></p>
+  </div><br>
   <header class="usa-header usa-header--extended insertheader">
 
   <div class="usa-nav-layout grid-row">
@@ -526,7 +529,7 @@ sub display {
 
   #NOTE: Supply NLM/NCBI E-utilities API key from:
   #  https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/
-  my $ncbi_key = "";
+  my $ncbi_key = "1a41ff51fec9ccebd1ad3d6a9d7a9edf370a";
 
   my $pmid, $ti, $ta;
   my $pd, $au, $aus, $ab;
