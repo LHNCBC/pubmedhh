@@ -23,7 +23,7 @@ function my_encr2($input) {
   $input_len = strlen($input);
 	for ($i=0; $i<$input_len; $i++) {
 	  $temp ='';
-	  $temp = base_convert(ord($input{$i})*$key1+$key2, 10, 36);
+	  $temp = base_convert(ord($input[$i])*$key1+$key2, 10, 36);
 		switch (strlen($temp)) {		
 			case 1:
 			  $temp  = "0".$temp;
@@ -47,7 +47,7 @@ function my_decr2($input) {
   $len = ceil (strlen($out)/2);
   for ($i=0; $i< $len; $i++) {
     $index = $i*2;
-	  $onechar = $out{$index}.$out{$index+1};
+	  $onechar = $out[$index].$out[$index+1];
 	  $onechar = (base_convert($onechar, 36, 10)-$key2)/$key1;
     $output .= chr($onechar);
   }
@@ -64,16 +64,16 @@ function rf_en ($input) {
 	  $temp ='';
 		$key2 = ($i+1)%95;
 		
-		if ( (ord($input{$i})>126) || (ord($input{$i})<32) ) {
+		if ( (ord($input[$i])>126) || (ord($input[$i])<32) ) {
 		  //$input{$i} = ' ';
 		}
-	  $temp = (ord($input{$i})-32)*$key1+$key2;
+	  $temp = (ord($input[$i])-32)*$key1+$key2;
 		if ($temp >= 95) {
 		  $temp = $temp - 95;
 		}
 		$temp = chr($temp+32);
-		if ( (ord($input{$i})>126) || (ord($input{$i})<32) ) {
-		  $temp = $input{$i};
+		if ( (ord($input[$i])>126) || (ord($input[$i])<32) ) {
+		  $temp = $input[$i];
 		}
 		$output .= $temp;
 	}
@@ -90,7 +90,7 @@ function rf_de($input) {
   for ($i=0; $i< $len; $i++) {
 	  $onechar = '';
 		$key2 = ($i+1)%95;
-	  $onechar = ord($out{$i})-32;
+	  $onechar = ord($out[$i])-32;
 		$onechar = ($onechar-$key2)/$key1;
 		if ( $onechar< 0 ) {
 		  $onechar = $onechar + 95; 
@@ -100,10 +100,10 @@ function rf_de($input) {
 		  $onechar = chr($onechar);
 		}
 		else {
-		  $onechar = $out{$i};
+		  $onechar = $out[$i];
 		}
-		if ( (ord($out{$i})>126) || (ord($out{$i})<32) ) {
-		  $onechar = $out{$i};
+		if ( (ord($out[$i])>126) || (ord($out[$i])<32) ) {
+		  $onechar = $out[$i];
 		}
     $output .= $onechar;
   }
@@ -133,16 +133,16 @@ function hsqr_en ($input, $pswd) {
 	  $temp ='';
 		$key2 = ($i+1 + $new_key)%95;
 		
-		if ( (ord($input{$i})>126) || (ord($input{$i})<32) ) {
+		if ( (ord($input[$i])>126) || (ord($input[$i])<32) ) {
 		  //$input{$i} = ' ';
 		}
-	  $temp = (ord($input{$i})-32)*$key1+$key2;
+	  $temp = (ord($input[$i])-32)*$key1+$key2;
 		if ($temp >= 95) {
 		  $temp = $temp - 95;
 		}
 		$temp = chr($temp+32);
-		if ( (ord($input{$i})>126) || (ord($input{$i})<32) ) {
-		  $temp = $input{$i};
+		if ( (ord($input[$i])>126) || (ord($input[$i])<32) ) {
+		  $temp = $input[$i];
 		}
 		$output .= $temp;
 	}
@@ -165,7 +165,7 @@ function hsqr_de($input, $pswd) {
   for ($i=0; $i< $len; $i++) {
 	  $onechar = '';
 		$key2 = ($i+1 + $new_key)%95;
-	  $onechar = ord($out{$i})-32;
+	  $onechar = ord($out[$i])-32;
 		
 		$onechar = ($onechar-$key2)/$key1;
 		if ( $onechar< 0 ) {
@@ -176,10 +176,10 @@ function hsqr_de($input, $pswd) {
 		  $onechar = chr($onechar);
 		}
 		else {
-		  $onechar = $out{$i};
+		  $onechar = $out[$i];
 		}
-		if ( (ord($out{$i})>126) || (ord($out{$i})<32) ) {
-		  $onechar = $out{$i};
+		if ( (ord($out[$i])>126) || (ord($out[$i])<32) ) {
+		  $onechar = $out[$i];
 		}
     $output .= $onechar;
   }
@@ -193,7 +193,7 @@ function twitter_url_en($input) {
   $input_len = strlen($input);
 	for ($i=0; $i<$input_len; $i++) {
 	  $temp ='';
-	  $temp = base_convert(ord($input{$i})*$key1+$key2, 10, 36);
+	  $temp = base_convert(ord($input[$i])*$key1+$key2, 10, 36);
 		switch (strlen($temp)) {		
 			case 1:
 			  $temp  = "0".$temp;
@@ -215,7 +215,7 @@ function twitter_url_de($input) {
   $len = ceil (strlen($out)/2);
   for ($i=0; $i< $len; $i++) {
     $index = $i*2;
-	  $onechar = $out{$index}.$out{$index+1};
+	  $onechar = $out[$index].$out[$index+1];
 	  $onechar = (base_convert($onechar, 36, 10)-$key2)/$key1;
     $output .= chr($onechar);
   }

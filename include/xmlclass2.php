@@ -184,7 +184,7 @@ function endElement ($parser, $tagName) {
 
 function characterData ($parser, $data) {
   $i= $this->i;
-	if (array_key_exists('inarticle', $this->final[$i])) {
+	if (is_array($this->final[$i]) && array_key_exists('inarticle', $this->final[$i])) {
 	  switch ($this->final[$i]["tag"]) {
 		  case "PMID":
 			  	 $this->final[$i]["pmid"] .= $data;
