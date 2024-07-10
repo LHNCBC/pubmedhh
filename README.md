@@ -7,7 +7,7 @@ PubMed for Handhelds (PubMed4Hh) brings PubMed/MEDLINE to the point of care thro
 
 ## Installation
 
-Pubmedhh requires Apache, MySQL, PHP and Perl. (Both the PHP and MySQL are known to work up to version 8.) It also requires an NLM/NCBI API key. Learn how to get one here:
+Pubmedhh requires Apache, MySQL, PHP and Perl. (Known working versions are Apache 2.4.52, MySQL 8, PHP 8, and Perl 5.) It also requires an NLM/NCBI API key. Learn how to get one here:
 
   https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/
 
