@@ -39,8 +39,10 @@ height="0" width="0" style="display:none;visibility:hidden" title="googletagmana
 <!-- End Google Tag Manager (noscript) -->
 
   <div class="usa-overlay"></div>
+  <div class="CCOI-news container padding-top-2">
+  <p class="margin-bottom-0"><strong>These tools will no longer be maintained as of <span style="color:red;">December 31, 2024</span>.  Archived website can be found <a href="https://wayback.archive-it.org/7745/20240503152346/https://pubmedhh.nlm.nih.gov/" title="External link: please review our privacy policy.">here</a>. PubMed4Hh GitHub repository can be found <a href="https://github.com/lhncbc/pubmedhh">here</a>. <a href=https://support.nlm.nih.gov/support/create-case/>Contact NLM Customer Service</a> if you have questions.</strong></p>
+  </div><br>
   <header class="usa-header usa-header--extended insertheader">
-  
   <div class="usa-nav-layout grid-row">
      <div class="usa-logo grid-col-10" id="extended-logo">
 
@@ -185,8 +187,10 @@ foreach ($_POST as $key => $value) {
 $_SERVER["QUERY_STRING"] = strip_tags($_SERVER["QUERY_STRING"]);
 $_SERVER["QUERY_STRING"] = preg_replace($pattern, $replacement, $_SERVER["QUERY_STRING"]);
 
-	$readdata = $_SERVER["QUERY_STRING"];
-	parse_str($readdata);
+	parse_str($_SERVER["QUERY_STRING"], $query);
+  if (is_array($query)) {
+    extract($query);
+  }
 	
 	if (!isset($from) || $from != 'meme') {
 		$from = 'tbld';
@@ -205,8 +209,10 @@ $_SERVER["QUERY_STRING"] = preg_replace($pattern, $replacement, $_SERVER["QUERY_
   $checked = (array_key_exists('checked', $_POST))? $_POST["checked"]:'';
 	
   if ($checked == '') {
-		$readdata = $_SERVER["QUERY_STRING"];
-  	parse_str($readdata);
+		parse_str($_SERVER["QUERY_STRING"], $query);
+    if (is_array($query)) {
+      extract($query);
+    }
     $proj = isset($proj)? $proj:'';
     $lang = isset($lang)? $lang:'';
     $outid = isset($outid)? $outid:'';

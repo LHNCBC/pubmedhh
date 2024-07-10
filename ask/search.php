@@ -44,6 +44,9 @@ height="0" width="0" style="display:none;visibility:hidden" title="googletagmana
 <!-- End Google Tag Manager (noscript) -->
 
   <div class="usa-overlay"></div>
+  <div class="CCOI-news container padding-top-2">
+  <p class="margin-bottom-0"><strong>These tools will no longer be maintained as of <span style="color:red;">December 31, 2024</span>.  Archived website can be found <a href="https://wayback.archive-it.org/7745/20240503152346/https://pubmedhh.nlm.nih.gov/" title="External link: please review our privacy policy.">here</a>. PubMed4Hh GitHub repository can be found <a href="https://github.com/lhncbc/pubmedhh">here</a>. <a href=https://support.nlm.nih.gov/support/create-case/>Contact NLM Customer Service</a> if you have questions.</strong></p>
+  </div><br>
   <header class="usa-header usa-header--extended insertheader">
   
   <div class="usa-nav-layout grid-row">
@@ -176,8 +179,10 @@ height="0" width="0" style="display:none;visibility:hidden" title="googletagmana
 	
 	$homeurl = "../ask";
 	
-	$readdata = strip_tags($_SERVER["QUERY_STRING"]);
-  parse_str($readdata);
+	parse_str(strip_tags($_SERVER["QUERY_STRING"]), $query);
+  if (is_array($query)) {
+    extract($query);
+  }
 	
   $id = isset($id)? strip_tags($id):'';
   $proj = isset($proj)? strip_tags($proj):'';
@@ -1133,8 +1138,8 @@ if (!(isset($submit) && ($submit=="Y"))) {
 
   $handle = file_get_contents("../include/newM.txt");
 
-  $backsize = sizeof($backup);
-  $uselsize = sizeof($useless);
+  $backsize = is_array($backup)? sizeof($backup) : 0;
+  $uselsize = is_array($useless)? sizeof($useless) : 0;
   $usepos = $uselsize;
 
   for ($i=0; $i<$backsize; $i++) {
